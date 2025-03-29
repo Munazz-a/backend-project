@@ -6,7 +6,19 @@ import dotnev from 'dotenv';
 
 dotnev.config({path: './.env'}); //while using dotenv through import we need to add experimental flag in package.json
 
-connectDb();
+connectDb() //as we are async method, it will return a promise so we can use .then() and .catch() to handle the promise
+.then( ()=>{
+    app.on("ERROR: ",(error)=>{
+        console.log("ERROR is: ",error);
+    })
+
+    app.listen(process.env.PORT || 8000 , ()=>{
+        console.log(`Server is running fine on PORT: ${process.env.PORT}`)
+    })
+} )
+.catch((err)=>{
+    console.log("Error: ",err)
+})
 
 
 
@@ -14,7 +26,7 @@ connectDb();
 
 
 
-
+// ANOTHER METHOD || CLEAN METHOD IN DB>INDEX.JS
 /*
 import express from 'express';
 const app = express();
@@ -36,4 +48,4 @@ const app = express();
         throw error
     }
 })(); //CONNECTING MONGOOSE || DATABASE
-*/ // ANOTHER METHOD || CLEAN METHOD IN DB>INDEX.JS
+*/ 

@@ -8,7 +8,7 @@ const connectDb = async ()=>{
 
     } catch (error) {
         console.log("Connection Error: ",error)
-        process.exit(1)
+        process.exit(1) //process.exit() will force the process to exit as quickly as possible even if there are still asynchronous operations pending that have not yet completed fully
     }
 }
 
