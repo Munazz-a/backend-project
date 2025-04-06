@@ -2,9 +2,11 @@
 
 
 import connectDb from './db/index.js';
-import dotnev from 'dotenv';
+import dotenv from 'dotenv';
+import { app } from './app.js'; //importing the app instance from app.js
 
-dotnev.config({path: './.env'}); //while using dotenv through import we need to add experimental flag in package.json
+
+dotenv.config({path: './.env'}); //while using dotenv through import we need to add experimental flag in package.json
 
 connectDb() //as we are async method, it will return a promise so we can use .then() and .catch() to handle the promise
 .then( ()=>{

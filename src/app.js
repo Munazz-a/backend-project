@@ -15,4 +15,15 @@ app.use(express.urlencoded({extended : true,
     limit : '16kb'
 }))
 app.use(express.static('public')); //storing the static files in public folder
+
+
+//Importing routes
+import userRoute from "./routes/user.routes.js";
+
+
+//Route declaration
+app.use("/api/v1/users", userRoute);
+
+//http://localhost:8000/api/v1/users/register
+
 export { app }; //EXPORTING THE APP INSTANCE  
